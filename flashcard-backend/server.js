@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const flashcardRoutes = require('./routes/flashcardRoutes');
 const quizRoutes = require('./routes/quizRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const learningMaterialRoutes = require('./routes/learningMaterialRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -38,7 +39,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/flashcards', flashcardRoutes);
 app.use('/api/quizzes', quizRoutes);
 app.use('/admin', adminRoutes);
-app.use('/api/quiz', require('./routes/quizRoutes'));
+app.use('/api/materials', learningMaterialRoutes);
 
 
 // ✅ Health Check Route
@@ -48,6 +49,7 @@ app.get('/api/health', (req, res) => {
 
 // 🌍 Static Files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 🧲 Catch-all for client-side routing
 app.get('*', (req, res) => {

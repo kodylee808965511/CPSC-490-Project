@@ -1,0 +1,11 @@
+const mongoose = require('mongoose');
+
+const learningMaterialSchema = new mongoose.Schema({
+  originalName: { type: String, required: true },
+  path: { type: String, required: true },
+  mimeType: { type: String, required: true },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('LearningMaterial', learningMaterialSchema);
