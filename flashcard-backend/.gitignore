@@ -18,3 +18,7 @@ Thumbs.db
 
 # Optional: OS specific
 *.swp
+
+# User uploaded files
+uploads/
+!uploads/.gitkeep
